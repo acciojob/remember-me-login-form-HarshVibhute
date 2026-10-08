@@ -5,10 +5,11 @@
 <head>
 	<link rel="stylesheet" href="styles.css">
 </head>
-
+<h1>Login Form</h1> <form id="form"> <input type="text" placeholder="Username" id="username"> <input type="password" placeholder="Password" id="password"> <label> <input type="checkbox" id="checkbox"> Remember me. </label> <input type="submit" id="submit" value="Submit"> </form> <button id="existing" style="display: none;"> Login as existing user </button>
 <body>
 	<!-- the entire body must be written by student -->
     <script type="text/javascript" src="./script.js">
+		let form = document.getElementById("form"); let username = document.getElementById("username"); let password = document.getElementById("password"); let checkbox = document.getElementById("checkbox"); let existing = document.getElementById("existing"); // Check if credentials already exist if (localStorage.getItem("username")) { existing.style.display = "block"; } // Form submit form.addEventListener("submit", function(event) { event.preventDefault(); alert("Logged in as " + username.value); if (checkbox.checked) { localStorage.setItem("username", username.value); localStorage.setItem("password", password.value); existing.style.display = "block"; } else { localStorage.removeItem("username"); localStorage.removeItem("password"); existing.style.display = "none"; } }); // Existing user login existing.addEventListener("click", function() { let savedUsername = localStorage.getItem("username"); alert("Logged in as " + savedUsername); });
 </script>
 
 </body>
